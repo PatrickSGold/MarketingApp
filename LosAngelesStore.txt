@@ -1,0 +1,5 @@
+{
+  "whatWasDoneToday" : "Coding",
+  "ProductsGiven" : 1,
+  "spokeToManager" : false
+}
