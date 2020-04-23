@@ -18,5 +18,7 @@ public class Main {
 
         controller.run();
 
+        System.out.println("New commit");
+
     }
 }
