@@ -15,7 +15,6 @@ public interface ServiceRepository {
 
     void deleteFile();
 
-    void updateFile();
 
 
 }

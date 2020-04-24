@@ -3,7 +3,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import controller.Controller;
 import service.Service;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -51,7 +50,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
             File newFile = new File(newFilePath());
             if (newFile.createNewFile()) {
                 System.out.println("File created: " + newFile.getName());
-            } else {
+            }
+            else {
                 System.out.println("File already exists.");
             }
         } catch (IOException e) {
@@ -86,12 +86,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         }
         else {
             System.out.println("Wrong input. Try again.");
-            deleteFile();
+            deleteConfirmation();
         }
-    }
-
-    public void updateFile() {
-        // modify something in file
     }
 
     private String existingFilePath() throws IOException {
