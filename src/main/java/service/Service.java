@@ -3,6 +3,7 @@ package service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Service {
@@ -38,15 +39,31 @@ public class Service {
     private void setArea() {
         System.out.print("Please enter the area of the store: ");
         area = input.nextLine();
+
+        if (area.isEmpty()) {
+            handleEmptyString();
+            setArea();
+        }
     }
 
     private void setStoreName() {
         System.out.print("Please enter the store's name: ");
         storeName = input.nextLine();
+
+        if (storeName.isEmpty()) {
+            handleEmptyString();
+            setStoreName();
+        }
     }
+
     private void setWhatWasDoneToday() {
         System.out.print("Please write you have done today: ");
         whatWasDoneToday = input.nextLine();
+
+        if (whatWasDoneToday.isEmpty()) {
+            handleEmptyString();
+            setWhatWasDoneToday();
+        }
     }
 
     private void setProductsGiven() {
@@ -61,23 +78,31 @@ public class Service {
     }
 
     private void setSpokeToManager() {
-        try {
-            System.out.print("Did you speak to the manager today? Enter 1 for yes, or 2 for no: ");
-            int answer = input.nextInt();
 
-            if (answer == 1) {
+        // FIGURE OUT WHAT IS WRONG WITH THIS
+
+        System.out.print("Did you speak to the manager today? Enter yes or no: ");
+        String answer = input.nextLine();
+
+        try {
+            if (answer.equalsIgnoreCase("yes")) {
                 spokeToManager = true;
-            } else if (answer == 2) {
+            } else if (answer.equalsIgnoreCase("no")) {
                 spokeToManager = false;
             } else {
                 System.out.println("Wrong input. Try again.");
                 setSpokeToManager();
             }
         }
-        catch (InputMismatchException exception) {
+        catch(NoSuchElementException exception){
             System.out.println("Wrong input. Try again.");
             setSpokeToManager();
         }
+    }
+
+
+    private void handleEmptyString() {
+        System.out.println("Something went wrong. Please try again.");
     }
 
     public String getArea() {
